@@ -421,3 +421,36 @@ mysql>
 [root@zhangyz ~]# netstat -tunlp | grep mysql 
 tcp        0      0 :::5635                     :::*                        LISTEN      24815/mysqld    
 ```
+
+
+
+#### MySQL目录结构
+
+```shell
+/usr/local/mysql5.5  —— 软件的安装目录
+bin：存放的是服务器和客户端的程序(命令)
+docs：文档           
+lib：存放库文件         
+README：简介  
+sql-bench：benchmarks性能测试
+COPYING：跟版权相关的
+include：存放的头文件
+man：man手册
+scripts：脚本目录
+support-files：模板文件
+data：存放数据的目录，我们指定了/data/mysql，那么这个目录就不再使用了
+INSTALL-BINARY ：mysql的安装文档
+mysql-test：mysql测试相关的
+share：共享路径及其他
+/data/mysql  —— 数据存放路径
+[root@s200 mysql]# ls
+ibdata1  ：系统自己命名的数据文件    
+mysql-bin.00000X ：二进制日志文件、主要用于备份恢复
+mysql-bin.index：二进制日志索引文件                 
+ib_logfile0和ib_logfile1：系统自己命名的日志文件         
+s200.uplooking.com.err：错误日志文件
+s200.uplooking.com.pid：pid文件
+mysql ：以下三个都是数据库，mysql是必须存在的       
+test
+performance_schema
+```
