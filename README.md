@@ -199,6 +199,49 @@ MySQL：单线程多进程的
 1) 嵌入式SQL: 与动态SQL类似，但其语言必须程序编译时完全确定下来ODBC
 2) 动态SQL: 程序设计语言使用函数 (mysql_connect()) 或者方法与RDBMS服务器建立连接并进行交互通过建立连接向SQL服务器发送查询语句并将结果保存至变量中进行处理JDBC
 
+使用cmake编译mysql-5.6 cmake 指定编译选项的方式不同于make， 实现方式对比如下：
+```shell
+./configure         cmake . 
+./configure --help    cmake . -LAH  or  ccmake . 
+```
+
+指定安装文件的安装路径时常用的选项：
+```shell
+-DCMAKE_INSTALL_PREFIX=/usr/local/mysql
+-DMYSQL_DATADIR=/data/mysql
+-DSYSCONFDIR=/etc
+```
+
+默认编译的存储引擎包括： csv， myisam， myisamerg 若要安装其他存储引擎，可以使用类似如下编译选项：
+```shell
+-DWITH_INNOBASE_STORAGE_ENGINE = 1
+-DWITH_ARCHIVE_STORAGE_ENGINE = 1
+-DWITH_BLACKHOLE_STORAGE_ENGINE = 1
+-DWITH_FEDERATED_STORAGE_ENGINE = 1
+```
+
+若要明确指定不编译某存储引擎，可以使用类似如下的选项
+```shell
+-DWITHOUT_<ENGINE>_STORAGE_ENGINE = 1
+```
+比如：
+```shell
+-DWITHOUT_EXAMPLE_STORAGE_ENGINE = 1
+-DWITHOUT_FEDERATED_STORAGE_ENGINE = 1
+-DWITHOUT_PARTITION_STORAGE_ENGINE = 1
+```
+
+如若要编译进其它功能，如ssl 等， 则可使用类似如下选项来实现编译时使用某库或不使用某库
+```shell
+-DWITH_TCP_PORT = 3306
+-DMYSQL_UNIX_ADDR = /tmp/mysql.sock
+-DENABLED_LOCAL_INFILE = 1
+-DEXTRA_CHARSETS = all
+-DDEFAULT_CHARSET = utf8
+-DDEFAULT_COLLATION = utf8_general_ci
+-DWITH_DEBUG = 0
+-DENABLE_PROFILING = 1
+```
 
 ### 编译安装cmake
 ```shell
