@@ -468,3 +468,9 @@ performance_schema
 | InnoDB | 所有表共享一个表空间文件 |
 | .frm | 表结构 |
 | .ibd | 表空间 (表数据和表索引) |
+
+查看mysql服务器当前使用的是什么数据库引擎
+
+```sql
+show variables like '%innodb%';
+```
