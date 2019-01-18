@@ -504,3 +504,5 @@ mysql> show engines;
 [root@zhangyz db]# rm -rf ib_logfile0
 [root@zhangyz db]# rm -rf ib_logfile1
 ```
+
+删除完成之后在运行 mysqld_safe 就可以正确进行数据库了
