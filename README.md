@@ -487,3 +487,16 @@ mysql> show engines;
 | InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
 +--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
 ```
+
+记录一个问题如果mysql库在初始化完成之后不能正确的开启端口，可能需要删除两个文件
+
+```shell
+[root@zhangyz ~]# /usr/local/mysql/bin/mysqld_safe 
+120223 21:29:59 mysqld_safe Logging to '/data/db/db.err'. 
+120223 21:29:59 mysqld_safe Starting mysqld daemon with databases from /data/db 
+120223 21:29:59 mysqld_safe mysqld from pid file /data/db/db.pid ended
+```
+
+在网上查了很多资料，都不是我这种情况，后来发现需要删除 /data/db 下的2个文件。
+
+ib_logfile0 和 ib_logfile1
