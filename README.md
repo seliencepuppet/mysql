@@ -499,4 +499,8 @@ mysql> show engines;
 
 在网上查了很多资料，都不是我这种情况，后来发现需要删除 /data/db 下的2个文件。
 
-ib_logfile0 和 ib_logfile1
+```shell
+[root@zhangyz ~]# cd /data/db
+[root@zhangyz db]# rm -rf ib_logfile0
+[root@zhangyz db]# rm -rf ib_logfile1
+```
